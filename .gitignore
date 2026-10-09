@@ -1,0 +1,41 @@
+# Virtual environments
+.venv/
+venv/
+
+# Generated environments and build artifacts
+node_modules/
+build/
+dist/
+.tox/
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.ruff_cache/
+.mypy_cache/
+
+# Test and coverage artifacts
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+junit*.xml
+
+# Playwright MCP snapshots and generated output
+.playwright-mcp/
+playwright-report/
+test-results/
+
+# Generated reports and logs
+reports/
+report/
+logs/
+*.log
+
+# Local environment secrets
+.env
+.env.*
+!.env.example
+!.env.template
