@@ -52,3 +52,7 @@ Run only the employee-service pagination unit tests:
 ```powershell
 pytest tests/test_employee_service_pagination.py
 ```
+
+These pagination tests use stubbed API responses, so they do not launch a
+browser or require OrangeHRM credentials. The complete suite launches visible
+Chromium and uses the locally configured credentials.
