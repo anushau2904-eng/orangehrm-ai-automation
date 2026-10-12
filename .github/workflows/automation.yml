@@ -25,7 +25,7 @@ jobs:
         run: python -m playwright install --with-deps chromium
 
       - name: Create reports directory
-        run: mkdir -p reports
+        run: mkdir -p reports/screenshots
 
       - name: Run standard tests
         env:
@@ -39,4 +39,12 @@ jobs:
         with:
           name: pytest-html-report
           path: reports/pytest-report.html
+          if-no-files-found: warn
+
+      - name: Upload failure screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-failure-screenshots
+          path: reports/screenshots/
           if-no-files-found: warn

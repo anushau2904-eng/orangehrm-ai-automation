@@ -47,6 +47,17 @@ Run the complete test suite:
 pytest
 ```
 
+Run standard tests while generating the self-contained HTML report:
+
+```powershell
+pytest --ignore-glob='*AI*' --html=reports/pytest-report.html --self-contained-html
+```
+
+Reports are written under the project-local `reports/` directory. When a test
+fails and its `page` fixture is available, pytest captures a full-page
+screenshot under `reports/screenshots/`. The HTML report is generated at
+`reports/pytest-report.html` when the reporting command above is used.
+
 Run only the employee-service pagination unit tests:
 
 ```powershell
