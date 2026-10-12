@@ -24,8 +24,19 @@ jobs:
       - name: Install Chromium and system dependencies
         run: python -m playwright install --with-deps chromium
 
+      - name: Create reports directory
+        run: mkdir -p reports
+
       - name: Run standard tests
         env:
           ORANGEHRM_USERNAME: ${{ secrets.ORANGEHRM_USERNAME }}
           ORANGEHRM_PASSWORD: ${{ secrets.ORANGEHRM_PASSWORD }}
-        run: xvfb-run -a python -m pytest -v --ignore-glob='*AI*'
+        run: xvfb-run -a python -m pytest -v --ignore-glob='*AI*' --html=reports/pytest-report.html --self-contained-html
+
+      - name: Upload pytest HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-html-report
+          path: reports/pytest-report.html
+          if-no-files-found: warn
